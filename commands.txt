@@ -1,0 +1,155 @@
+
+installation :
+composer create-project laravel/laravel adv
+php artisan serv
+npm install
+npm run dev
+
+npm install --save bootstrap jquery popper.js cross-env
+npm run watch
+======================
+solve problem : that related popper : '
+
+npm i @popperjs/core
+npm run dev
+npm run watch
+
+====================
+===================
+istalling fortify :
+composer require laravel/fortify
+php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
+php artisan migrate
+
+You need to register fortify service provider inside the config/app.php files
+
+Add this
+
+App\Providers\FortifyServiceProvider::class,
+to config/app.php under the Application's Service Providers.
+
+==================
+Model and migration :
+php artisan make:model Category -m
+php artisan make:model Subcategory -m
+==============
+Controller :
+php artisan make:controller CategoryController -r
+php artisan make:controller SubcategoryController -r
+
+php artisan make:request SubcategoryFormRequest
+php artisan make:request SubcategoryUpdateRequest
+
+php artisan make:controller ChildController-r
+
+php artisan make:request ChildCategoryUpdateRequest
+
+php artisan make:controller MenuController
+
+=====
+
+php artisan make:model Country -m
+
+php artisan make:model State -m
+
+php artisan make:model City -m
+
+php artisan make:seeder CountryTableSeeder
+php artisan make:seeder StatesTableSeeder
+php artisan make:seeder CitiesTableSeeder
+
+php artisan db:seed
+
+php artisan make:model Advertisement -m
+php artisan make:controller AdvertisementController -r
+==========
+add extra column to table in database :
+php artisan make:migration add_slug_to_advertisements --table="advertisements"
+
+composer require doctrine/dbal
+
+========
+
+php artisan make:Request AdsFormRequest
+
+=================
+include vue :
+1- npm install --save vue
+2- Add the following to your resource/js/app.js :
+
+    window.Vue = require('vue');
+
+    windows.axios = require('axios');
+
+    const app = new Vue({
+        el:'#app'
+    });
+
+3- Vue.component('example-component',require('./components/ExampleComponent.vue').default);
+
+4- add <script src="{{asset('js/app.js')}}" defer ></script> in the head section of you .
+
+5- add id="app" to <body> </body>  or main <div></div> in  your layout
+
+6- add <example-component > </example-component> to your view
+
+7- Run npm run dev and run npm run watch
+
+solve problem :
+ERROR in ./resources/js/components/ExampleComponent.vue 1:0 Module parse failed:
+ Unexpected token (1:0) You may need an appropriate loader to handle this file type,
+  currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders >
+   <template> | <div>Hello World.</div> | </template>
+
+solve :
+ 1 ====
+webpack.mix.js
+
+mix.js('resources/js/app.js', 'public/js').vue({ version: 2 });
+2-===
+app.js
+
+window.Vue = require('vue').default;
+3-====
+npm run dev and npm run watch
+===================================================================
+Api :
+1- category and subcategory and childcategory :
+php artisan make:controller Api\ApiCategoryController
+php artisan make:controller Api\AddressController
+
+php artisan make:controller ProfileController
+
+php artisan make:controller FrontendController
+
+===========
+link youtube :
+1- composer require cohensive/embed
+2- in app config add provider and aliases
+
+=====
+Message system :
+php artisan make:model Message -m
+php artisan make:controller SendMessageController
+
+npm install --save vue-chat-scroll
+npm install moment --save
+npm install --save @fortawesome/fontawesome-free
+
+====
+login using facebook :
+composer require laravel/socialite
+
+php artisan make:controller SocialLoginController
+
+======
+save ad:
+php artisan make:migration create_advertisement_user_table
+php artisan make:controller SaveAdController
+
+php artisan make:controller AdminListingController
+
+php artisan make:model Fraud -m
+php artisan make:controller FraduController
+php artisan make:migration add_ad_id_to_frauds_table --table=frauds
+
